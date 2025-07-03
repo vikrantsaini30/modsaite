@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Projects Grove</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Lora', serif;
+    }
+
+    body {
+      background: #e0f0e0;
+      overflow-x: hidden;
+      color: #1e3c1e;
+    }
+
+    .meadow-bg {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(30, 140, 60, 0.3), rgba(50, 200, 50, 0.3));
+      animation: breezeFlow 15s infinite ease-in-out;
+      z-index: 0;
+    }
+
+    .meadow-bg::before,
+    .meadow-bg::after {
+      content: '';
+      position: absolute;
+      width: 100%; height: 100%;
+      background: radial-gradient(circle at 50% 50%, rgba(30, 140, 60, 0.4), transparent 50%);
+      animation: leafDrift 14s infinite linear;
+    }
+
+    @keyframes breezeFlow {
+      0%, 100% { opacity: 0.6; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.05); }
+    }
+
+    @keyframes leafDrift {
+      0% { transform: translate(0, 0) rotate(0deg); }
+      100% { transform: translate(-20px, 20px) rotate(360deg); }
+    }
+
+    .grove-container {
+      position: relative;
+      max-width: 700px;
+      margin: 50px auto;
+      padding: 30px;
+      background: linear-gradient(145deg, rgba(224, 240, 224, 0.95), rgba(60, 160, 60, 0.2));
+      border-radius: 25px;
+      border: 3px solid rgba(30, 60, 30, 0.8);
+      box-shadow: 0 0 60px rgba(30, 60, 30, 0.5),
+                  inset 0 0 30px rgba(50, 120, 50, 0.3);
+      z-index: 3;
+      backdrop-filter: blur(12px);
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 28px;
+      margin-bottom: 25px;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      color: #1e3c1e;
+      text-shadow: 0 0 20px #2e6d2e;
+      animation: sporeGlow 3.5s infinite ease-in-out;
+    }
+
+    @keyframes sporeGlow {
+      0%, 100% { text-shadow: 0 0 20px #2e6d2e; }
+      50% { text-shadow: 0 0 30px #2e6d2e, 0 0 50px #1e3c1e; }
+    }
+
+    form, .project-item {
+      margin-top: 20px;
+      text-align: left;
+    }
+
+    label {
+      display: block;
+      margin: 10px 0 6px;
+      font-weight: bold;
+      color: #2e6d2e;
+    }
+
+    input, button {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border: 2px solid rgba(30, 60, 30, 0.6);
+      border-radius: 12px;
+      font-size: 16px;
+      background: rgba(30, 60, 30, 0.05);
+      color: #1e3c1e;
+      transition: 0.4s ease;
+    }
+
+    input:focus {
+      border-color: #2e6d2e;
+      box-shadow: 0 0 20px #2e6d2e;
+      transform: scale(1.02);
+      outline: none;
+    }
+
+    button {
+      background: linear-gradient(45deg, #1e3c1e, #2e6d2e);
+      color: #e0f0e0;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 25px rgba(30, 60, 30, 0.9);
+    }
+
+    .project-item {
+      border-bottom: 1px solid #2e6d2e;
+      padding: 10px 0;
+    }
+
+    .project-item img {
+      max-width: 100%;
+      margin-top: 10px;
+      border: 2px solid #2e6d2e;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(30, 60, 30, 0.4);
+    }
+
+    .project-item a {
+      color: #2e6d2e;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .project-item a:hover {
+      text-shadow: 0 0 10px #2e6d2e;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="meadow-bg"></div>
+
+  <div class="grove-container">
+    <h1>🌿 Upload Your Project</h1>
+    <form id="uploadForm" enctype="multipart/form-data" method="POST" action="/upload">
+      <label>Project Name</label>
+      <input type="text" name="projectName" required />
+
+      <label>Select File (APK or Image)</label>
+      <input type="file" name="file" accept=".apk,image/*" required />
+
+      <button type="submit">Upload</button>
+    </form>
+
+    <h1>🌱 Your Projects</h1>
+    <div id="projectGallery"></div>
+  </div>
+
+  <script>
+    async function loadProjects() {
+      const res = await fetch('/api/projects');
+      const data = await res.json();
+      const container = document.getElementById('projectGallery');
+      container.innerHTML = '';
+
+      if (data.length === 0) {
+        container.innerHTML = '<p>No projects uploaded yet.</p>';
+        return;
+      }
+
+      data.forEach(p => {
+        const div = document.createElement('div');
+        div.className = 'project-item';
+        div.innerHTML = `
+          <strong>${p.name}</strong><br/>
+          ${p.type === 'image'
+            ? `<img src="/uploads/${p.filename}" alt="Project Image"/>`
+            : `<a href="/uploads/${p.filename}" download>Download APK</a>`}
+        `;
+        container.appendChild(div);
+      });
+    }
+
+    window.onload = loadProjects;
+  </script>
+</body>
+</html>

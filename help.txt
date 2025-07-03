@@ -1,0 +1,7 @@
+command propat using window 10 and window 7 window in normal work 
+using first command 
+usma jaka sabsa phala mujha apni file ya folder selected karo 
+2nd npm install express socket.io multer run this code host file 
+then your chat system and project system work properly 
+all data are stored in upoad folder ok 
+or agra jason package banana hai toh ya hai npm init -y

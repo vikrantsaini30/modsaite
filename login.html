@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Vikrant Saini - Portfolio</title>
+ <style>
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+      font-family: 'Lora', serif;
+    }
+
+    body {
+      background: #e0f0e0;
+      color: #1e3c1e;
+      overflow-x: hidden;
+    }
+
+    .meadow-bg {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: -1;
+      background: linear-gradient(135deg, rgba(30, 140, 60, 0.3), rgba(50, 200, 50, 0.3));
+      animation: breezeFlow 15s infinite ease-in-out;
+    }
+
+    .meadow-bg::before,
+    .meadow-bg::after {
+      content: '';
+      position: absolute;
+      width: 100%; height: 100%;
+      background: radial-gradient(circle at 50% 50%, rgba(30, 140, 60, 0.4), transparent 50%);
+      animation: leafDrift 14s infinite linear;
+    }
+
+    @keyframes breezeFlow {
+      0%, 100% { opacity: 0.6; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.05); }
+    }
+
+    @keyframes leafDrift {
+      0% { transform: translate(0, 0) rotate(0deg); }
+      100% { transform: translate(-20px, 20px) rotate(360deg); }
+    }
+
+    header, footer {
+      background: rgba(255, 255, 255, 0.8);
+      border-top: 2px solid #1e3c1e;
+      border-bottom: 2px solid #1e3c1e;
+      text-align: center;
+      padding: 1rem;
+      box-shadow: 0 0 20px rgba(30, 60, 30, 0.5);
+    }
+
+    header h1, footer p {
+      color: #1e3c1e;
+      font-size: 24px;
+      animation: sporeGlow 3s infinite ease-in-out;
+    }
+
+    nav {
+      margin-top: 0.5rem;
+    }
+
+    nav a {
+      margin: 0 15px;
+      color: #2e6d2e;
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.4s ease;
+    }
+
+    nav a:hover {
+      text-shadow: 0 0 8px #2e6d2e;
+    }
+
+    .lang-toggle {
+      padding: 0.5rem 1rem;
+      margin-top: 10px;
+      background: #2e6d2e;
+      border: none;
+      border-radius: 6px;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 0 10px rgba(30, 60, 30, 0.6);
+    }
+
+    .hero, .about, .projects, .contact {
+      background: rgba(183, 223, 132, 0.9);
+      border-radius: 20px;
+      padding: 2rem;
+      margin: 2rem;
+      box-shadow: 0 0 30px rgba(50, 120, 50, 0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .hero:hover, .about:hover, .projects:hover, .contact:hover {
+      transform: scale(1.02);
+      box-shadow: 0 0 50px rgba(30, 60, 30, 0.4);
+    }
+
+    h2, h3 {
+      color: #2e6d2e;
+      text-shadow: 0 0 10px #2e6d2e;
+    }
+
+    a {
+      color: #2e6d2e;
+    }
+
+    @keyframes sporeGlow {
+      0%, 100% { text-shadow: 0 0 10px #2e6d2e; }
+      50% { text-shadow: 0 0 20px #2e6d2e, 0 0 40px #1e3c1e; }
+    }
+
+    @media (max-width: 768px) {
+      .hero, .about, .projects, .contact {
+        margin: 1rem;
+        padding: 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div style="display:flex; align-items:center;">
+      <img src="gg.PNG" alt="Vikrant's Photo">
+      <div style="margin-left:15px;">
+        <h1 style="margin: 0;">VIKRANT SAINI</h1>
+        <p>ESPORTS PLAYER & FRONTEND DEVELOPER</p>
+      </div>
+    </div>
+    <nav>
+      <a href="#about">ABOUT</a>
+      <a href="projects.html">PROJECTS</a>
+      <a href="chat.html">CHAT ME</a>
+      <a href="dasbaord.html">DASHBOARD</a>
+      <a href="contact.html">CONTACT</a>
+    </nav>
+  </header>
+
+  <section id="about" class="info">
+    <CEnter><h2>OBJECTIVE</h2>
+    <p>
+    Working in a dynamic organization using my technical skills and creativity
+where I can add value with my eSports and web development knowledge.
+    </p>
+    <h3>Personal Information</h3>
+    <p><strong>Gender:</strong> Male</p>
+    <p><strong>Date of Birth:</strong> March 5, 2006</p>
+    <p><strong>Location:</strong> Baragaon, Karnal, Haryana</p>
+    <h3>Education</h3>
+    <p>12th Pass (Non-Medical), CBSE Board – Year: 2023</p>
+  <CENter></section>
+
+  <section id="skills" class="skills">
+  
+   <CENTER><h2>SKILLS </h2>
+    <ul>
+      <li>Python</li>
+      <li>HTML, CSS, JavaScript</li>
+      <li>Excel, PowerPoint</li>
+      <li>Graphic Designing, Editing</li>
+    </ul></CENTER>
+  </section>
+
+  <section id="esports" class="awards">
+    <CENTER><h2>ESPORTS EXPERIENCE</h2>
+    <p><strong>BGMI Professional Player</strong></p>
+    <ul>
+      <li>Multiple MVP awards – online gaming leagues</li>
+      <li>BGMI Tournament Winner – State Level</li>
+    </ul>
+
+    <h3>Honors & Awards</h3>
+    <ul>
+      <li>Multiple MVP awards – online gaming leagues</li>
+    </ul></CENTER>
+  </section>
+
+  <section id="certs" class="certs">
+    <CENter>><h2>CERTIFICATIONS</h2>
+    <ul>
+      <li>Certified in Python Basics</li>
+      <li>Graphic Designing</li>
+    </ul></CENTER>
+  </section>
+  <section class="interests">
+    <CENTER><h2>INTERESTS</h2>
+    <ul>
+      <li>Gaming</li>
+      <li>Music</li>
+      <li>Coding</li>
+    </ul></CENTER>
+  </section>
+  <section id="contact" class="contact">
+    <CENTER><h2>CONTACT</h2>
+    <p><strong>Phone:</strong> 9991583497</p>
+    <p><strong>Email:</strong> vikrantsaini2265@gmail.com</p>
+    <p><strong>Location:</strong> Baragaon, Karnal, Haryana</p></CENTER>
+  </section>
+
+
+
+  <footer>
+    &copy; 2025 Vikrant Saini. All rights reserved.
+  </footer>
+</body>
+</html>

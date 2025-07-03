@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact - Vikrant</title>
+  <style>
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+      font-family: 'Lora', serif;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: #e0f0e0;
+      overflow: hidden;
+    }
+
+    .meadow-bg {
+      position: absolute;
+      width: 100%; height: 100%;
+      background: linear-gradient(135deg, rgba(30, 140, 60, 0.3), rgba(50, 200, 50, 0.3));
+      animation: breezeFlow 15s infinite ease-in-out;
+      z-index: 0;
+    }
+
+    .meadow-bg::before,
+    .meadow-bg::after {
+      content: '';
+      position: absolute;
+      width: 100%; height: 100%;
+      background: radial-gradient(circle at 50% 50%, rgba(30, 140, 60, 0.4), transparent 50%);
+      animation: leafDrift 14s infinite linear;
+    }
+
+    @keyframes breezeFlow {
+      0%, 100% { opacity: 0.6; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.05); }
+    }
+
+    @keyframes leafDrift {
+      0% { transform: translate(0, 0) rotate(0deg); }
+      100% { transform: translate(-20px, 20px) rotate(360deg); }
+    }
+
+    .grove-core {
+      position: relative;
+      width: 360px;
+      padding: 30px 25px;
+      background: linear-gradient(145deg, rgba(224, 240, 224, 0.95), rgba(60, 160, 60, 0.2));
+      border-radius: 30px;
+      border: 3px solid rgba(30, 60, 30, 0.8);
+      box-shadow: 0 0 60px rgba(30, 60, 30, 0.6),
+                  inset 0 0 30px rgba(50, 120, 50, 0.3);
+      z-index: 3;
+      backdrop-filter: blur(12px);
+      animation: groveEmerge 3s ease-out forwards;
+    }
+
+    @keyframes groveEmerge {
+      0% { transform: scale(0.1) rotate(180deg); opacity: 0; }
+      60% { transform: scale(1.1) rotate(-10deg); opacity: 1; }
+      100% { transform: scale(1) rotate(0deg); opacity: 1; }
+    }
+
+    .grove-core::before {
+      content: '';
+      position: absolute;
+      top: -15px; left: -15px;
+      width: calc(100% + 30px); height: calc(100% + 30px);
+      background: conic-gradient(from 150deg, rgba(30, 60, 30, 0.5), transparent 70%);
+      animation: vineTwirl 4s infinite linear;
+      z-index: -1;
+      border-radius: 30px;
+    }
+
+    @keyframes vineTwirl {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(-360deg); }
+    }
+
+    h2 {
+      color: #1e3c1e;
+      text-align: center;
+      font-size: 26px;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      text-shadow: 0 0 20px #2e6d2e;
+      animation: sporeGlow 3.5s infinite ease-in-out;
+    }
+
+    @keyframes sporeGlow {
+      0%, 100% { text-shadow: 0 0 20px #2e6d2e; }
+      50% { text-shadow: 0 0 30px #2e6d2e, 0 0 50px #1e3c1e; }
+    }
+
+    .info-box {
+      margin-bottom: 20px;
+      color: #1e3c1e;
+      font-size: 16px;
+      line-height: 1.5;
+      background: rgba(255, 255, 255, 0.2);
+      padding: 12px 20px;
+      border-radius: 15px;
+      border: 1px solid rgba(30, 60, 30, 0.4);
+      backdrop-filter: blur(5px);
+    }
+
+    .info-box a {
+      color: #2e6d2e;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.4s ease;
+    }
+
+    .info-box a:hover {
+      letter-spacing: 2px;
+      text-shadow: 0 0 15px #2e6d2e;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="meadow-bg"></div>
+
+  <div class="grove-core">
+    <h2>Contact Me</h2>
+    <div class="info-box">📞 <strong>Phone:</strong> 9991583497</div>
+    <div class="info-box">📧 <strong>Email:</strong> 
+      <a href="mailto:vikrantsaini2265@gmail.com">Tap here to mail me</a>
+    </div>
+    <div class="info-box">📸 <strong>Instagram:</strong> 
+      <a href="https://www.instagram.com/xyromanime?igsh=MWVnbHNtMTdrbTVnbg" target="_blank">Follow me</a>
+    </div>
+    <div class="info-box">📺 <strong>YouTube:</strong> 
+      <a href="https://youtube.com/shorts/jzag77-92PY?si=-YQ0TBg4tWxocTw8" target="_blank">Subscribe</a>
+    </div>
+  </div>
+</body>
+</html>
